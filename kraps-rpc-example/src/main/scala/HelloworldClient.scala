@@ -37,7 +37,9 @@ object HelloworldClient {
   def asyncCall() = {
     val rpcConf = new RpcConf()
     val config = RpcEnvClientConfig(rpcConf, "hello-client")
+    // 创建 RpcEnv
     val rpcEnv: RpcEnv = NettyRpcEnvFactory.create(config)
+    // 注册RpcEndpointRef
     val endPointRef: RpcEndpointRef = rpcEnv.setupEndpointRef(RpcAddress("localhost", 52345), "hello-service")
     val future: Future[String] = endPointRef.ask[String](SayHi("neo"))
     future.onComplete {

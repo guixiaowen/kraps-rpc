@@ -60,8 +60,7 @@ class NettyRpcEnv(
   private val transportContext = new TransportContext(transportConf,
     new NettyRpcHandler(dispatcher, this, streamManager))
 
-  private def createClientBootstraps(): java.util.List[TransportClientBootstrap] =
-    java.util.Collections.emptyList[TransportClientBootstrap]
+  private def createClientBootstraps(): java.util.List[TransportClientBootstrap] = java.util.Collections.emptyList[TransportClientBootstrap]
 
   private val clientFactory = transportContext.createClientFactory(createClientBootstraps())
 
